@@ -1,59 +1,62 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { ModalController } from 'ionic-angular';
 import { LoadingController } from 'ionic-angular';
 import { AlertController } from 'ionic-angular';
 import { GetPropertiesProvider } from '../../providers/get-properties/get-properties'
+
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html',
-  providers:[GetPropertiesProvider]
+  providers: [GetPropertiesProvider]
 })
 export class HomePage {
   public rentalData = [];
-  public offset : any=0;
+  public offset: any = 0;
+
   constructor(
-    public navCtrl: NavController,
-    public lodingCtrl:LoadingController,
-    public alert:AlertController,
-    public getProp:GetPropertiesProvider
-  ){
+    private modal:ModalController,
+    public lodingCtrl: LoadingController,
+    public alert: AlertController,
+    public getProp: GetPropertiesProvider,
+    public modalCtrl: ModalController
+  ) {
+    this.showLoader();
     this.getProp.getProperties(this.offset).then(
-      prop=>{
+      prop => {
         for (var key in prop) {
           if (prop.hasOwnProperty(key)) {
-            var element = prop[key];
-            this.rentalData.push(prop[key]);                        
+            this.rentalData.push(prop[key]);
           }
         }
         this.offset = this.rentalData.length;
-      }
+      }      
     )
-    this.presentLoading();
   }
-  getPropertiesDetails(infiniteScroll){
+
+  getPropertiesDetails(infiniteScroll) {
     setTimeout(() => {
       this.getProp.getProperties(this.offset).then(
-        prop=>{
+        prop => {
           for (var key in prop) {
             if (prop.hasOwnProperty(key)) {
-              var element = prop[key];
-              this.rentalData.push(prop[key]);                        
+              this.rentalData.push(prop[key]);
             }
           }
           this.offset = this.rentalData.length;
         }
       )
       infiniteScroll.complete();
-    },500)
+    }, 500)
   }
-  presentLoading() {
+  showLoader() {
     let loader = this.lodingCtrl.create({
       content: "Please wait...",
-      duration: 1000
+      duration:1000
     });
     loader.present();
   }
-  loginAlert(){
+
+  loginAlert() {
     let prompt = this.alert.create({
       title: 'Login',
       message: "Enter a name for this new album you're so keen on adding",
@@ -79,5 +82,10 @@ export class HomePage {
       ]
     });
     prompt.present();
+  }
+
+  openSearch(characterNum){
+    const searchModal = this.modal.create('SearchModalPage');
+    searchModal.present();
   }
 }
