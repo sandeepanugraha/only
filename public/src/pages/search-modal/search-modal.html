@@ -6,12 +6,12 @@
 -->
 <ion-header>
 
-  <ion-navbar>
+  <ion-navbar color="o4rHead">
     <ion-title>Search..</ion-title>
     <ion-buttons end>
       <button ion-button (click)="closeSearchModal()">Close</button>
     </ion-buttons>
-  </ion-navbar>
+  </ion-navbar> 
 </ion-header>
 
 <ion-content>
@@ -19,22 +19,132 @@
     <ion-list-header class="searchPropertyTypeHeader">
       Property Type
     </ion-list-header>
-    <ion-item  no-lines>
+    <ion-item no-lines>
       <ion-label>Rent</ion-label>
       <ion-radio checked="true" value="go"></ion-radio>
     </ion-item>
-    <ion-item  no-lines>
+    <ion-item no-lines>
       <ion-label>Lease</ion-label>
       <ion-radio value="rust"></ion-radio>
     </ion-item>
   </ion-list>
-  <ion-list radio-group>
+
+  <ion-list>
     <ion-list-header class="searchPropertyTypeHeader">
       BHK Type
     </ion-list-header>
-    <ion-item  no-lines>
-      <ion-label>1BHK</ion-label>
-      <ion-checkbox color="dark" checked="true"></ion-checkbox>
+    <ion-item no-lines>
+      <ion-label>ANY</ion-label>
+      <ion-checkbox color="o4rHead" checked="true"></ion-checkbox>
     </ion-item>
+    <ion-item no-lines>
+      <ion-label>1BHK</ion-label>
+      <ion-checkbox color="o4rHead" checked="false"></ion-checkbox>
+    </ion-item>
+    <ion-item no-lines>
+      <ion-label>2BHK</ion-label>
+      <ion-checkbox color="o4rHead" checked="false"></ion-checkbox>
+    </ion-item>
+    <ion-item no-lines>
+      <ion-label>3BHK</ion-label>
+      <ion-checkbox color="o4rHead" checked="false"></ion-checkbox>
+    </ion-item>
+    <ion-item no-lines>
+      <ion-label>4BHK</ion-label>
+      <ion-checkbox color="o4rHead" checked="false"></ion-checkbox>
+    </ion-item>
+    <ion-item no-lines>
+      <ion-label>5BHK</ion-label>
+      <ion-checkbox color="o4rHead" checked="false"></ion-checkbox>
+    </ion-item>
+    <ion-item no-lines>
+      <ion-label>6BHK</ion-label>
+      <ion-checkbox color="o4rHead" checked="false"></ion-checkbox>
+    </ion-item>
+    <ion-item no-lines>
+      <ion-label>1RK</ion-label>
+      <ion-checkbox color="o4rHead" checked="false"></ion-checkbox>
+    </ion-item>
+    <ion-item no-lines>
+      <ion-label>1R</ion-label>
+      <ion-checkbox color="o4rHead" checked="false"></ion-checkbox>
+    </ion-item>
+  </ion-list>
+
+  <ion-list>
+    <ion-list-header class="searchPropertyTypeHeader">
+      Price
+    </ion-list-header>
+    <ion-item no-lines>
+      <ion-label>ANY</ion-label>
+      <ion-checkbox color="o4rHead" checked="true"></ion-checkbox>
+    </ion-item>
+    <ion-item no-lines>
+      <ion-label>Below 5000</ion-label>
+      <ion-checkbox color="o4rHead" checked="false"></ion-checkbox>
+    </ion-item>
+    <ion-item no-lines>
+      <ion-label>5000 - 10000</ion-label>
+      <ion-checkbox color="o4rHead" checked="false"></ion-checkbox>
+    </ion-item>
+    <ion-item no-lines>
+      <ion-label>10000 - 15000</ion-label>
+      <ion-checkbox color="o4rHead" checked="false"></ion-checkbox>
+    </ion-item>
+    <ion-item no-lines>
+      <ion-label>15000 - 20000</ion-label>
+      <ion-checkbox color="o4rHead" checked="false"></ion-checkbox>
+    </ion-item>
+    <ion-item no-lines>
+      <ion-label>Above 20000</ion-label>
+      <ion-checkbox color="o4rHead" checked="false"></ion-checkbox>
+    </ion-item>
+  </ion-list>
+
+  <ion-list>
+    <ion-list-header class="searchPropertyTypeHeader">
+      Furnishing
+    </ion-list-header>
+    <ion-item no-lines>
+      <ion-label>ANY</ion-label>
+      <ion-checkbox color="o4rHead" checked="true"></ion-checkbox>
+    </ion-item>
+    <ion-item no-lines>
+      <ion-label>Furnished</ion-label>
+      <ion-checkbox color="o4rHead" checked="false"></ion-checkbox>
+    </ion-item>
+    <ion-item no-lines>
+      <ion-label>Semi Furnished</ion-label>
+      <ion-checkbox color="o4rHead" checked="false"></ion-checkbox>
+    </ion-item>
+    <ion-item no-lines>
+      <ion-label>Unfurnished</ion-label>
+      <ion-checkbox color="o4rHead" checked="false"></ion-checkbox>
+    </ion-item>
+  </ion-list>
+
+  <ion-list>
+    <ion-list-header class="searchPropertyTypeHeader">
+      Available For
+    </ion-list-header>
+    <ion-item no-lines>
+      <ion-label>ANY</ion-label>
+      <ion-checkbox color="o4rHead" checked="true"></ion-checkbox>
+    </ion-item>
+    <ion-item no-lines>
+      <ion-label>Family</ion-label>
+      <ion-checkbox color="o4rHead" checked="false"></ion-checkbox>
+    </ion-item>
+    <ion-item no-lines>
+      <ion-label>Bachelors</ion-label>
+      <ion-checkbox color="o4rHead" checked="false"></ion-checkbox>
+    </ion-item>
+    <ion-item no-lines>
+      <ion-label>No - Restrictions</ion-label>
+      <ion-checkbox color="o4rHead" checked="false"></ion-checkbox>
+    </ion-item>
+  </ion-list>
+  <ion-list>
+    <button ion-button block color="primary">Search...</button>
   </ion-list>
 </ion-content>

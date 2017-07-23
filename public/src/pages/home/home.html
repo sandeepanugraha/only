@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-navbar>
+  <ion-navbar color="o4rHead">
     <ion-buttons end>
       <button ion-button icon-only color="royal" (click)="openSearch()">
         <ion-icon name="search"></ion-icon>
@@ -10,6 +10,19 @@
     </button>
     <ion-title>only4rental</ion-title>
   </ion-navbar>
+  <ion-list >
+    <ion-item>
+      <ion-label color="o4rHead">Sort As </ion-label>
+      <ion-select [(ngModel)]="sort">
+        <ion-option color="o4rHead" value="A2Z">Name A to Z</ion-option>
+        <ion-option color="o4rHead" value="Z2A">Name Z to A</ion-option>
+        <ion-option color="o4rHead" value="L2H">Price Low - High</ion-option>
+        <ion-option color="o4rHead" value="H2L">Price High- Low</ion-option>
+        <ion-option color="o4rHead" value="LF">Most Liked First</ion-option>
+        <ion-option color="o4rHead" value="CF">Most Commented First</ion-option>
+      </ion-select>
+    </ion-item>
+  </ion-list>
 </ion-header>
 
 <ion-content>
@@ -25,21 +38,22 @@
       </ion-card-content>
       <ion-row>
         <ion-col>
-          <button ion-button icon-left clear small (click)="loginAlert(1)">
-          <ion-icon name="thumbs-up"></ion-icon>
-          <div>{{item.views}} Likes</div>
-        </button>
+          <button color="o4rHead" ion-button icon-left clear small (click)="loginAlert(1)">
+            <ion-icon name="thumbs-up"></ion-icon>
+            <div>{{item.views}} Likes</div>
+          </button>
         </ion-col>
         <ion-col>
-          <button ion-button icon-left clear small>
-          <ion-icon name="text"></ion-icon>
-          <div>{{item.comments}} Comments</div>
-        </button>
+          <button color="o4rHead" ion-button icon-left clear small>
+            <ion-icon name="text"></ion-icon>
+            <div>{{item.comments}} Comments</div>
+          </button>
         </ion-col>
         <ion-col center text-center>
-          <ion-note>
-            {{item.postDate}}
-          </ion-note>
+          <button color="o4rHead" ion-button icon-left clear small>
+            <ion-icon ios="ios-calendar" md="md-calendar"></ion-icon>
+            <div>{{item.postDate}}</div>
+          </button>
         </ion-col>
       </ion-row>
     </ion-card>
