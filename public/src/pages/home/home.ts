@@ -2,55 +2,50 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { LoadingController } from 'ionic-angular';
 import { AlertController } from 'ionic-angular';
-
+import { GetPropertiesProvider } from '../../providers/get-properties/get-properties'
 @Component({
   selector: 'page-home',
-  templateUrl: 'home.html'
+  templateUrl: 'home.html',
+  providers:[GetPropertiesProvider]
 })
 export class HomePage {
-
-  constructor(public navCtrl: NavController,
-              public lodingCtrl:LoadingController,
-              public alert:AlertController) {
-                this.presentLoading();
-              }
-    public rentalData =[{
-              name:"VNR PG",
-              id:1,
-              rent:"6000",
-              advance:"3000",
-              location:"Kandanchavadi",
-              sharing:"4",
-              img:"../assets/img/pg1.jpg",
-              views:12,
-              comments:4,
-              description:"VNR PG is located on kandanchavadi, and we are providing a wonderfull features..",
-              postDate:"08 Mar,2015"
-            },{
-              name:"Sreekrishna",
-              rent:"5000",
-              id:2,
-              advance:"2000",
-              location:"perungudi",
-              sharing:"3",
-              img:"../assets/img/pg2.jpg",
-              views:25,
-              comments:0,
-              postDate:"25 Apr,2013",
-              description:"Sreekrishna is located on perungudi, and we are providing a wonderfull features.."
-            },{
-              name:"Harikrishna",
-              rent:"7000",
-              id:3,
-              advance:"3000",
-              location:"SRP tools",
-              sharing:"2",
-              img:"../assets/img/pg3.jpg",
-              views:98,
-              comments:10,
-              postDate:"01 Jul,2017",
-              description:"Harikrishna is located on SRP tools, and we are providing a wonderfull features.."
-            }];
+  public rentalData = [];
+  public offset : any=0;
+  constructor(
+    public navCtrl: NavController,
+    public lodingCtrl:LoadingController,
+    public alert:AlertController,
+    public getProp:GetPropertiesProvider
+  ){
+    this.getProp.getProperties(this.offset).then(
+      prop=>{
+        for (var key in prop) {
+          if (prop.hasOwnProperty(key)) {
+            var element = prop[key];
+            this.rentalData.push(prop[key]);                        
+          }
+        }
+        this.offset = this.rentalData.length;
+      }
+    )
+    this.presentLoading();
+  }
+  getPropertiesDetails(infiniteScroll){
+    setTimeout(() => {
+      this.getProp.getProperties(this.offset).then(
+        prop=>{
+          for (var key in prop) {
+            if (prop.hasOwnProperty(key)) {
+              var element = prop[key];
+              this.rentalData.push(prop[key]);                        
+            }
+          }
+          this.offset = this.rentalData.length;
+        }
+      )
+      infiniteScroll.complete();
+    },500)
+  }
   presentLoading() {
     let loader = this.lodingCtrl.create({
       content: "Please wait...",
